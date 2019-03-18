@@ -1,0 +1,99 @@
+table, th, td{
+  font-family: 'IBM Plex Sans', sans-serif;
+  border-bottom: 1px solid #ddd;
+  border-collapse: collapse;
+}
+table{
+  
+  width: 1000px;
+}
+th, td{
+  width: 1000px;
+  
+  text-align: left;
+  padding: 8px;
+  
+}
+#searchField{
+  margin-top: 4px;
+  margin-bottom: 12px;
+  padding: 8px;
+  width: 600px;
+  height: 30px;
+  
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 20px;
+  outline: none;
+}
+
+
+  button{
+    position: relative;
+  font-family: 'IBM Plex Sans', sans-serif;
+  width: 80px;
+  height: 40px;
+  background-color: blueviolet;
+  border-radius: 20px;
+  color: beige;
+  outline: none;  
+  font-size: 14px;
+}
+
+label{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 20px;
+}
+
+.textField{
+  padding: 8px;
+  width: 600px;
+  height: 30px;
+  margin-left: 50px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 20px;
+  outline: none;  
+}
+
+textarea{
+  padding: 8px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  outline: none;  
+}
+#textInputEdit{
+  position: relative;
+  left: 62px;
+  margin-bottom: 20px;
+}
+
+#textInputDirector{
+  position: relative;
+  margin-bottom: 20px;
+  left: 28px;
+}
+#labelDesc{
+  position: relative;
+  top: -60px;
+
+}
+#ratingRange{
+  position: relative;
+  left: 90px;
+  top: 5px;
+}
+#ratingCount{
+  position: relative;
+  left: 110px;
+  top: 3px;
+}
+
+#saveButton{
+  position: relative;
+  left: 410px;
+  top: -30px;
+}
