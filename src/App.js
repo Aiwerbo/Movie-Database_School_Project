@@ -11,7 +11,7 @@ class Add extends Component{
  
   constructor(props){
     super(props);
-    this.state = {data: {title: null, description: null, director: null, rating: 0 }, redirect: false, errorMessage: '', validate: ''}
+    this.state = {data: {title: null, description: null, director: null, rating: 0 }, redirect: false, errorMessage: '', validate: '', disabled: false}
     this.addMovie = this.addMovie.bind(this);
     this.addTitle = this.addTitle.bind(this);
     this.addDesc = this.addDesc.bind(this);
@@ -30,6 +30,7 @@ class Add extends Component{
   }
   else{
       this.setState({validate: ''});
+
   }
 }
 
@@ -53,14 +54,16 @@ class Add extends Component{
 
   
   addMovie(){
+    this.setState({disabled: true});
     this.source = axios.CancelToken.source();
     
     axios.post('http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies', this.state.data, {headers: {"Content-Type": "application/json"}, cancelToken: this.source.token })
     
     .then(response =>  {
+
       console.log(response);
       if(response.status === 201){
-        
+        this.setState({disabled:false})
         this.setState({redirect: true})
       }
       
@@ -72,11 +75,13 @@ class Add extends Component{
       }
 
       if(error.response && error.response.status >= 500){
-        this.setState({errorMessage: 'Something went wrong on the server, Go back to movie Page and try again.'})
+        this.setState({errorMessage: 'Something went wrong on the server, Go back to movie Page and try again.'});
+        this.setState({disabled: false});
       }
       
       if(error.response && error.response.status === 400){
-        this.setState({errorMessage: 'The Movie cannot be added. Please fill in the blanks.'})
+        this.setState({errorMessage: 'The Movie cannot be added. Please fill in the blanks.'});
+        this.setState({disabled: false});
       }
       
     })
@@ -91,6 +96,7 @@ class Add extends Component{
   addTitle(e){
     this.validateTitle(e.target.value)
     this.setState({data: {...this.state.data, title: e.target.value}, errorMessage:''})
+    
   }
   addDesc(e){
     this.validateDesc(e.target.value)
@@ -128,7 +134,7 @@ class Add extends Component{
         <input id="ratingRange" type="range" name="points" min="0" max="5" step="0.1" value={this.state.data.rating} onChange={this.addRating}></input>
         <label id="ratingCount">{this.state.data.rating}</label>
         </form>
-        <button id="saveButton" onClick={this.addMovie}>Save</button>
+        <button id="saveButton" onClick={this.addMovie} disabled={this.state.disabled}>Save</button>
         <p>{this.state.errorMessage}</p>
         <p>{this.state.validate}</p>
         <Helmet><title>Add Movie</title></Helmet>
@@ -144,7 +150,7 @@ class Edit extends Component{
 
   constructor(props){
     super(props);
-    this.state ={data: null, redirect: false, errorMessage: '', validate: ''};
+    this.state ={data: null, redirect: false, errorMessage: '', validate: '', disabled: false};
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDesc = this.onChangeDesc.bind(this);
     this.onChangeDirector = this.onChangeDirector.bind(this);
@@ -190,6 +196,7 @@ class Edit extends Component{
   }
 
   updateMovie(){
+    this.setState({disabled: true});
     this.source = axios.CancelToken.source();
     const dataId = this.state.data.id;
     const data = this.state.data;
@@ -207,10 +214,12 @@ class Edit extends Component{
 
       if(error.response && error.response.status >= 500){
         this.setState({errorMessage: 'Something went wrong on the server, Go back to movie Page and try again.'})
+        this.setState({disabled: false});
       }
 
       if(error.response && error.response.status === 400){
-        this.setState({errorMessage: 'The Movie cannot be updated. Please fill in the blanks.'})
+        this.setState({errorMessage: 'The Movie cannot be updated. Please fill in the blanks.'});
+        this.setState({disabled: false});
       }
       
     })
@@ -290,7 +299,7 @@ class Edit extends Component{
         <label id="ratingCount">{data.rating}</label>
         </form>
 
-        <button id="saveButton" onClick={this.updateMovie}>Save</button>
+        <button id="saveButton" onClick={this.updateMovie} disabled={this.state.disabled}>Save</button>
         <p>{this.state.errorMessage}</p>
         <p>{this.state.validate}</p>
         <Helmet><title>Edit Movie</title></Helmet>
@@ -348,6 +357,7 @@ class Description extends Component{
       <p id="description">Description:{data.description}</p>
       <p>Director: {data.director}</p>
       <div>Rating: <Rater total={5} interactive={false} rating={Number(data.rating)}/> {data.rating}</div>
+      <Link to={'/edit/' + data.id}><button className="edit">Edit</button></Link>
       
       </>
     )
