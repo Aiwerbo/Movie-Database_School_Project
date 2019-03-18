@@ -28,7 +28,7 @@ class Table extends Component{
     return (
       
       <tr key={obj.id}>
-        <td><Link to={"/description/" + obj.id}>{obj.title}</Link></td>
+        <td><Link to={"/description/" + obj.id} className="tableLinks">{obj.title}</Link></td>
         <td>{obj.director}</td>
         <td><Rater total={5} interactive={false} rating={Number(rating)}/> ({rating})</td>
         <td><Link to={"/edit/" + obj.id}><button className="delAndEdit">Edit</button></Link></td>
@@ -91,9 +91,6 @@ class Table extends Component{
   };
 
   }
-  
-  
-    
 
 export default Table;
 

@@ -29,7 +29,7 @@ th, td{
 
 
   button{
-    position: relative;
+  position: relative;
   font-family: 'IBM Plex Sans', sans-serif;
   width: 80px;
   height: 40px;
@@ -38,6 +38,10 @@ th, td{
   color: beige;
   outline: none;  
   font-size: 14px;
+}
+
+button:hover{
+  background-color: rgb(172, 122, 220);
 }
 
 label{
@@ -96,4 +100,13 @@ textarea{
   position: relative;
   left: 410px;
   top: -30px;
+}
+
+.tableLinks{
+  color: blueviolet;
+  text-decoration: none;
+}
+
+.tableLinks:hover{
+  color: rgb(172, 122, 220);
 }
