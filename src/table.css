@@ -93,13 +93,13 @@ textarea{
 #ratingCount{
   position: relative;
   left: 110px;
-  top: 3px;
+  top: 4px;
 }
 
 #saveButton{
   position: relative;
-  left: 410px;
-  top: -30px;
+  left: 563px;
+  top: 12px;
 }
 
 .tableLinks{
@@ -109,4 +109,99 @@ textarea{
 
 .tableLinks:hover{
   color: rgb(172, 122, 220);
+}
+
+
+
+
+
+
+#ratingRange {
+  height: 38px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 400px;
+  top: 15px;
+}
+#ratingRange:focus {
+  outline: none;
+}
+#ratingRange::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000;
+  background: blueviolet;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+#ratingRange::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 20px;
+  border-radius: 4px;
+  background: #F34FFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+#ratingRange:focus::-webkit-slider-runnable-track {
+  background: blueviolet;
+}
+#ratingRange::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: blueviolet;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+#ratingRange::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 20px;
+  border-radius: 4px;
+  background: #F34FFF;
+  cursor: pointer;
+}
+#ratingRange::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+#ratingRange::-ms-fill-lower {
+  background: blueviolet;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000000;
+}
+#ratingRange::-ms-fill-upper {
+  background: blueviolet;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000000;
+}
+#ratingRange::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 20px;
+  border-radius: 4px;
+  background: #F34FFF;
+  cursor: pointer;
+}
+#ratingRange:focus::-ms-fill-lower {
+  background: blueviolet;
+}
+#ratingRange:focus::-ms-fill-upper {
+  background: blueviolet;
 }
